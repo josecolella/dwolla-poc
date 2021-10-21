@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "rootlending": "apps/rootlending",
+    "rootlending-e2e": "apps/rootlending-e2e"
+  }
+}

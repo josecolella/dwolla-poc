@@ -1,0 +1,72 @@
+{
+  "root": "apps/rootlending",
+  "sourceRoot": "apps/rootlending/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/rootlending",
+        "index": "apps/rootlending/src/index.html",
+        "baseHref": "/",
+        "main": "apps/rootlending/src/main.tsx",
+        "polyfills": "apps/rootlending/src/polyfills.ts",
+        "tsConfig": "apps/rootlending/tsconfig.app.json",
+        "assets": [
+          "apps/rootlending/src/favicon.ico",
+          "apps/rootlending/src/assets"
+        ],
+        "styles": ["apps/rootlending/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/rootlending/src/environments/environment.ts",
+              "with": "apps/rootlending/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "rootlending:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "rootlending:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/rootlending/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/rootlending"],
+      "options": {
+        "jestConfig": "apps/rootlending/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

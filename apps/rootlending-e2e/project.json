@@ -1,0 +1,29 @@
+{
+  "root": "apps/rootlending-e2e",
+  "sourceRoot": "apps/rootlending-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/rootlending-e2e/cypress.json",
+        "devServerTarget": "rootlending:serve",
+        "tsConfig": "apps/rootlending-e2e/tsconfig.json"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "rootlending:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/rootlending-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["rootlending"]
+}
